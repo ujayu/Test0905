@@ -1,12 +1,22 @@
 var express = require('express');
+var fs = require('fs');
 var path=require('path');
 var app = express();
-
+var _dir = fs.realpathSync('.');
+_dir = _dir+'/public/'
 //server configuration
-app.use(express.static(path.join(__dirname,'public')));
+app.use(express.static('public'));
 
 app.get('/', function (req, res) {
-    res.sendFile(path.join(___dirname + '/index.html'));
+    res.sendFile((_dir + '/index.html'));
+ });
+ 
+ app.get('/array', function (req, res) {
+    res.sendFile((_dir + '/Arrays.html'));
+ });
+ 
+ app.get('/try', function (req, res) {
+    res.sendFile((_dir + '/try.html'));
  });
 
 
